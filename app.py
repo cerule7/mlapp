@@ -1,5 +1,5 @@
 from flask import Flask, request
-
+import json
 from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://admin:HACKRUpassword@cluster0-d2rxd.gcp.mongodb.net/test?retryWrites=true&w=majority")
@@ -17,7 +17,10 @@ app = Flask(__name__)
 @app.route('/all_images', methods=['GET'])
 def retrieve_all():
 	rows = db.inventory.find({})
-	return rows
+	l = list()
+	for row in rows:
+		l.append(row)
+	return json.dumps(l)
 
 #inserts posted image into db
 @app.route('/upload', methods=['POST'])
