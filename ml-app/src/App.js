@@ -3,13 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Form, Button} from 'react-bootstrap';
+import axios from 'axios';
 
-class Welcome extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {name: '', file: []};
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
